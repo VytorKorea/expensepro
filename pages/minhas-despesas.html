@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consultar despesas | ExpensePro</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/minhas-despesas.css">
+</head>
+<body>
+  <header class="topo"><h1>ExpensePro</h1><p><a href="../index.html">Início</a> / Consultar despesas</p></header>
+  <main><section class="painel">
+    <h2>Despesas</h2>
+    <form class="filtros" id="form-filtros">
+      <div><label for="filtro-categoria">Categoria</label><select id="filtro-categoria"><option value="">Todas</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option></select></div>
+      <div><label for="filtro-data">Data</label><input id="filtro-data" type="date"></div>
+      <button type="submit">Filtrar</button>
+    </form>
+    <table><thead><tr><th>Descrição</th><th>Data</th><th>Categoria</th><th>Valor</th></tr></thead><tbody id="lista-despesas"><!-- Adicionar linhas com JavaScript --></tbody></table>
+  </section></main>
+  <script src="../js/minhas-despesas.js"></script>
+</body>
+</html>

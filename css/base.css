@@ -1,0 +1,67 @@
+:root {
+  --azul: #1E3A8A;
+  --verde: #059669;
+  --ambar: #D97706;
+  --grafite: #374151;
+  --fundo: #F9FAFB;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--grafite);
+  font-family: Arial, sans-serif;
+}
+
+.topo {
+  padding: 1rem 1.5rem;
+  background: var(--azul);
+  color: white;
+}
+
+.topo h1, .topo p { margin: 0; }
+.topo p { margin-top: .3rem; }
+
+main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+
+.painel {
+  padding: 1.5rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: white;
+}
+
+h2 { margin-top: 0; color: var(--azul); }
+
+label { display: block; margin: 1rem 0 .35rem; }
+input, select, textarea {
+  width: 100%;
+  padding: .7rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 5px;
+  color: var(--grafite);
+  font: inherit;
+}
+
+button {
+  margin-top: 1rem;
+  padding: .7rem 1rem;
+  border: 0;
+  border-radius: 5px;
+  background: var(--verde);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { padding: .7rem; border-bottom: 1px solid #E5E7EB; text-align: left; }
+th { background: var(--azul); color: white; }
+
+@media (max-width: 600px) {
+  main { margin: 1rem auto; }
+  .painel { padding: 1rem; }
+  table { font-size: .9rem; }
+}

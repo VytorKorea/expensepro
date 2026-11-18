@@ -1,0 +1,11 @@
+.inicio h2 { margin-bottom: 1rem; }
+.menu { display: grid; gap: .75rem; }
+.menu a {
+  padding: 1rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  background: white;
+  color: var(--azul);
+  text-decoration: none;
+}
+.menu a:hover { border-color: var(--verde); }
