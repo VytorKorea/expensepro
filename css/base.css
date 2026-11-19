@@ -18,7 +18,17 @@ body {
 .topo {
   padding: 1rem 1.5rem;
   background: var(--azul);
-  color: white;
+}
+
+.logo {
+  display: block;
+  width: 250px; /* ajuste conforme necessário */
+  max-width: 100%;
+  height: auto;
+  padding: .35rem;
+  border: 2px solid var(--verde);
+  border-radius: 8px;
+  background-color: white;
 }
 
 .topo h1, .topo p { margin: 0; }
@@ -64,4 +74,12 @@ th { background: var(--azul); color: white; }
   main { margin: 1rem auto; }
   .painel { padding: 1rem; }
   table { font-size: .9rem; }
+}
+
+.logo-pro {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--azul);
+  color: white;
 }

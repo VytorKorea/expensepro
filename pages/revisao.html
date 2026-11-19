@@ -3,68 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Revisar despesas | ExpensePro</title>
+  <title>Revisão de despesas | ExpensePro</title>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/revisao.css">
   <script src="../js/revisao.js" defer></script>
 </head>
-<body>
-  <header class="topo">
-    <h1>ExpensePro</h1>
-    <p><a href="../index.html">Início</a> / Revisar despesas</p>
+<body class="pagina-revisao">
+  <header class="barra-superior">
+    <a class="marca" href="../index.html" aria-label="ExpensePro, início">
+      <span class="marca-icone" aria-hidden="true">E</span>
+      <span>ExpensePro</span>
+    </a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="../index.html">Início</a>
+      <a href="minhas-despesas.html">Despesas</a>
+      <a class="ativo" href="revisao.html" aria-current="page">Revisão</a>
+      <a href="relatorios.html">Relatórios</a>
+    </nav>
+    <a class="acao-nova" href="nova-despesa.html"><span aria-hidden="true">＋</span> Nova despesa</a>
   </header>
 
-  <main>
-    <section>
-      <h3>Despesas cadastradas</h3>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Data</th>
-            <th>Categoria</th>
-            <th>Valor</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody id="lista-despesas">
-          <!-- O JavaScript vai colocar as despesas aqui -->
-        </tbody>
-      </table>
+  <main class="conteudo-revisao">
+    <div class="caminho"><a href="../index.html">Início</a><span aria-hidden="true">/</span><span>Financeiro</span></div>
+    <section class="cabecalho-pagina" aria-labelledby="titulo-revisao">
+      <div>
+        <p class="sobretitulo">FINANCEIRO</p>
+        <h1 id="titulo-revisao">Revisão de despesas</h1>
+        <p class="descricao-pagina">Confira os lançamentos e mantenha os registros atualizados.</p>
+      </div>
+      <div class="periodo"><span class="ponto-verde"></span> Visão geral</div>
     </section>
 
-    <section>
-      <h3>Editar despesa</h3>
+    <section class="resumo" aria-label="Resumo das despesas">
+      <article class="cartao-resumo">
+        <div class="resumo-rotulo"><span>Total de despesas</span><span class="icone-resumo azul" aria-hidden="true">▤</span></div>
+        <strong id="total-despesas">0</strong>
+        <span class="resumo-detalhe">lançamentos registrados</span>
+      </article>
+      <article class="cartao-resumo destaque-ambar">
+        <div class="resumo-rotulo"><span>Valor no período</span><span class="icone-resumo ambar" aria-hidden="true">R$</span></div>
+        <strong id="valor-total">R$ 0,00</strong>
+        <span class="resumo-detalhe">soma das despesas cadastradas</span>
+      </article>
+      <article class="cartao-resumo">
+        <div class="resumo-rotulo"><span>Categorias</span><span class="icone-resumo verde" aria-hidden="true">◷</span></div>
+        <strong id="total-categorias">0</strong>
+        <span class="resumo-detalhe">categorias com lançamentos</span>
+      </article>
+    </section>
 
-      <form id="form-edicao">
-        <input id="despesa-id" type="hidden">
-
-        <label for="descricao">Descrição</label>
-        <input id="descricao" name="descricao" required>
-
-        <label for="data">Data</label>
-        <input id="data" name="data" type="date" required>
-
-        <label for="categoria">Categoria</label>
-        <select id="categoria" name="categoria" required>
-          <option value="">Selecione</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Hospedagem">Hospedagem</option>
-          <option value="Alimentação">Alimentação</option>
-          <option value="Materiais">Materiais</option>
-        </select>
-
-        <label for="valor">Valor em reais</label>
-        <input id="valor" name="valor" type="number" min="0" step="0.01" required>
-
-        <label for="observacao">Observação</label>
-        <textarea id="observacao" name="observacao"></textarea>
-
-        <button id="salvar-alteracoes" type="submit">Salvar alterações</button>
-        <button id="excluir-despesa" type="button">Excluir despesa</button>
+    <section class="painel-lista" aria-labelledby="titulo-lista">
+      <div class="titulo-lista">
+        <div><h2 id="titulo-lista">Lançamentos</h2><p>Consulte, corrija ou remova uma despesa.</p></div>
+        <span class="contador" id="contador-lista">0 registros</span>
+      </div>
+      <form class="filtros-revisao" id="form-filtros">
+        <label class="campo-busca"><span class="sr-only">Buscar despesa</span><span aria-hidden="true">⌕</span><input id="filtro-busca" type="search" placeholder="Buscar por descrição..."></label>
+        <label><span class="sr-only">Filtrar por categoria</span><select id="filtro-categoria"><option value="">Todas as categorias</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option></select></label>
+        <label><span class="sr-only">Filtrar por data</span><input id="filtro-data" type="date" aria-label="Filtrar por data"></label>
+        <button class="botao-limpar" type="reset">Limpar filtros</button>
       </form>
+      <div class="tabela-rolagem">
+        <table>
+          <thead><tr><th scope="col">DESCRIÇÃO</th><th scope="col">DATA</th><th scope="col">CATEGORIA</th><th scope="col">VALOR</th><th scope="col">AÇÕES</th></tr></thead>
+          <tbody id="lista-despesas"></tbody>
+        </table>
+      </div>
+      <div class="estado-vazio" id="estado-vazio" hidden>
+        <span class="vazio-icone" aria-hidden="true">▤</span>
+        <h3>Nenhuma despesa encontrada</h3>
+        <p>Cadastre uma despesa ou ajuste os filtros para ver os lançamentos.</p>
+        <a class="botao-primario" href="nova-despesa.html">Cadastrar despesa</a>
+      </div>
+      <p class="mensagem" id="mensagem" role="status" aria-live="polite"></p>
     </section>
   </main>
+
+  <dialog class="dialog-edicao" id="dialog-edicao" aria-labelledby="titulo-edicao">
+    <form id="form-edicao" class="form-edicao">
+      <div class="dialog-cabecalho"><div><p class="sobretitulo">ATUALIZAR REGISTRO</p><h2 id="titulo-edicao">Corrigir despesa</h2></div><button class="fechar-dialogo" type="button" data-fechar aria-label="Fechar">×</button></div>
+      <input id="despesa-id" type="hidden">
+      <label for="descricao">Descrição</label><input id="descricao" name="descricao" maxlength="90" required>
+      <div class="campos-duplos"><div><label for="data">Data</label><input id="data" name="data" type="date" required></div><div><label for="valor">Valor</label><div class="campo-valor"><span>R$</span><input id="valor" name="valor" type="number" min="0.01" step="0.01" required></div></div></div>
+      <label for="categoria">Categoria</label><select id="categoria" name="categoria" required><option value="">Selecione uma categoria</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option></select>
+      <label for="observacao">Observação <span class="opcional">(opcional)</span></label><textarea id="observacao" name="observacao" rows="3" maxlength="300" placeholder="Adicione um detalhe sobre este lançamento"></textarea>
+      <div class="dialog-acoes"><button class="botao-secundario" type="button" data-fechar>Cancelar</button><button class="botao-primario" type="submit">Salvar alterações</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="dialog-confirmacao" id="dialog-exclusao" aria-labelledby="titulo-exclusao">
+    <div class="confirmacao-conteudo"><span class="alerta-icone" aria-hidden="true">!</span><h2 id="titulo-exclusao">Excluir esta despesa?</h2><p>O lançamento será removido da sua lista.</p><div class="dialog-acoes"><button class="botao-secundario" type="button" data-fechar>Cancelar</button><button class="botao-perigo" id="confirmar-exclusao" type="button">Excluir despesa</button></div></div>
+  </dialog>
 </body>
 </html>
