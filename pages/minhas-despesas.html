@@ -3,21 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Consultar despesas | ExpensePro</title>
+  <title>Minhas despesas | ExpensePro</title>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/minhas-despesas.css">
+  <script src="../js/minhas-despesas.js" defer></script>
 </head>
 <body>
-  <header class="topo"><h1>ExpensePro</h1><p><a href="../index.html">Início</a> / Consultar despesas</p></header>
-  <main><section class="painel">
-    <h2>Despesas</h2>
-    <form class="filtros" id="form-filtros">
-      <div><label for="filtro-categoria">Categoria</label><select id="filtro-categoria"><option value="">Todas</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option></select></div>
-      <div><label for="filtro-data">Data</label><input id="filtro-data" type="date"></div>
-      <button type="submit">Filtrar</button>
-    </form>
-    <table><thead><tr><th>Descrição</th><th>Data</th><th>Categoria</th><th>Valor</th></tr></thead><tbody id="lista-despesas"><!-- Adicionar linhas com JavaScript --></tbody></table>
-  </section></main>
-  <script src="../js/minhas-despesas.js"></script>
+  <header class="cabecalho-pagina">
+    <a class="marca" href="../index.html">Expense<span>Pro</span></a>
+    <a class="voltar" href="../index.html">← Voltar ao início</a>
+  </header>
+
+  <main class="pagina-despesas">
+    <div class="titulo-pagina">
+      <div>
+        <p class="identificador">CONTROLE FINANCEIRO</p>
+        <h1>Minhas despesas</h1>
+        <p>Consulte seus lançamentos e encontre o que precisa.</p>
+      </div>
+      <a class="atalho" href="relatorios.html">Ver relatórios →</a>
+    </div>
+
+    <section class="painel" aria-label="Filtros de despesas">
+      <h2>Filtrar despesas</h2>
+      <div class="grupo-filtros">
+        <label for="filtroCategoria">Categoria
+          <select id="filtroCategoria">
+            <option value="">Todas as categorias</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Hospedagem">Hospedagem</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Materiais">Materiais</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </label>
+        <label for="filtroData">Data
+          <input type="date" id="filtroData">
+        </label>
+        <button id="limparFiltros" type="button">Limpar filtros</button>
+      </div>
+    </section>
+
+    <section class="painel" aria-label="Lista de despesas">
+      <div class="cabecalho-lista">
+        <h2>Despesas encontradas</h2>
+        <strong id="quantidadeDespesas" aria-live="polite">0 despesa(s)</strong>
+      </div>
+      <div class="area-tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Categoria</th>
+              <th>Data</th>
+              <th class="valor">Valor</th>
+            </tr>
+          </thead>
+          <tbody id="listaDespesas"></tbody>
+        </table>
+      </div>
+      <p id="mensagemVazia" class="mensagem-vazia" hidden>Nenhuma despesa encontrada para esses filtros.</p>
+      <div class="rodape-lista">
+        <span>Total das despesas exibidas</span>
+        <strong id="totalFiltrado">R$ 0,00</strong>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
+
