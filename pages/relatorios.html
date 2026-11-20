@@ -3,22 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Relatórios | ExpensePro</title>
+  <title>Relatório por categoria | ExpensePro</title>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/relatorios.css">
+  <script src="../js/relatorios.js" defer></script>
 </head>
 <body>
-  <header class="topo"><h1>ExpensePro</h1><p><a href="../index.html">Início</a> / Relatórios</p></header>
-  <main><section class="painel">
-    <h2>Despesas por categoria</h2>
-    <label for="periodo">Período</label><input id="periodo" type="month">
-    <ul class="lista-categorias" id="totais-categoria">
-      <li>Transporte: <span><!-- total --></span></li>
-      <li>Hospedagem: <span><!-- total --></span></li>
-      <li>Alimentação: <span><!-- total --></span></li>
-      <li>Materiais: <span><!-- total --></span></li>
-    </ul>
-  </section></main>
-  <script src="../js/relatorios.js"></script>
+  <header class="cabecalho-pagina">
+    <a class="marca" href="../index.html">Expense<span>Pro</span></a>
+    <a class="voltar" href="../index.html">← Voltar ao início</a>
+  </header>
+
+  <main class="pagina-relatorios">
+    <p class="identificador">CONTROLE FINANCEIRO</p>
+    <h1>Relatório por categoria</h1>
+    <p class="subtitulo">Veja quanto foi gasto em cada categoria.</p>
+
+    <div class="filtro-periodo">
+      <label for="periodo">Filtrar por mês (opcional)</label>
+      <input type="month" id="periodo">
+    </div>
+
+    <div class="indicadores">
+      <section class="indicador">
+        <span>Total de despesas</span>
+        <strong id="totalGeral">R$ 0,00</strong>
+      </section>
+      <section class="indicador">
+        <span>Categorias com gastos</span>
+        <strong id="quantidadeCategorias">0</strong>
+      </section>
+    </div>
+
+    <section class="painel-relatorio">
+      <h2>Resumo dos gastos</h2>
+      <div class="area-tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th class="valor">Total gasto</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaRelatorio"></tbody>
+        </table>
+      </div>
+      <p id="mensagemVazia" class="mensagem-vazia" hidden>Nenhuma despesa cadastrada.</p>
+      <p class="rodape">Os valores são calculados a partir das despesas cadastradas.</p>
+    </section>
+
+    <a class="link-consulta" href="minhas-despesas.html">← Consultar despesas</a>
+  </main>
 </body>
 </html>
+
