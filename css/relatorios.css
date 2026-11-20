@@ -1,7 +1,6 @@
 /* Página de relatórios — segue a paleta azul e verde da ExpensePro. */
 body { margin: 0; background: #f9fafb; color: #374151; font-family: Arial, sans-serif; }
 * { box-sizing: border-box; }
-.cabecalho-pagina { padding: 18px max(20px, calc((100% - 1000px) / 2)); background: #1e3a8a; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .marca { text-decoration: none; color: #fff; font-size: 23px; font-weight: 800; }
 .marca span { color: #86efac; }
 .voltar { color: #fff; text-decoration: none; font-size: 14px; }
