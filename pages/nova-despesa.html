@@ -7,25 +7,84 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/nova-despesa.css">
 </head>
-<body>
+<body class="pagina-nova-despesa">
   <header class="topo">
     <a href="../index.html"><img class="logo" src="../img/logo.png" alt="ExpensePro"></a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="../index.html">Início</a>
+      <a class="ativo" href="minhas-despesas.html" aria-current="page">Despesas</a>
+      <a href="revisao.html">Revisão</a>
+      <a href="relatorios.html">Relatórios</a>
+    </nav>
   </header>
-  <main><section class="painel form-despesa">
-    <h2>Cadastrar despesa</h2>
-    <form id="form-despesa">
-      <label for="descricao">Descrição</label><input id="descricao" name="descricao" required>
-      <label for="valor">Valor (R$)</label><input id="valor" name="valor" type="number" min="0" step="0.01" required>
-      <label for="data">Data</label><input id="data" name="data" type="date" required>
-      <label for="categoria">Categoria</label>
-      <select id="categoria" name="categoria" required>
-        <option value="">Selecione</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option>
-      </select>
-      <label for="observacao">Observação</label><textarea id="observacao" name="observacao"></textarea>
-      <p class="nota">O caso menciona o envio de fotos de notas fiscais.</p>
-      <button type="submit">Salvar despesa</button>
-    </form>
-  </section></main>
+
+  <main class="conteudo-despesa">
+    <a class="voltar" href="minhas-despesas.html">← Minhas despesas</a>
+
+    <div class="titulo-pagina">
+      <h1>Nova despesa</h1>
+      <p>Rápido de lançar. Fácil de acompanhar.</p>
+    </div>
+
+    <div class="layout-despesa">
+      <form id="form-despesa" novalidate>
+        <section class="painel form-despesa">
+          <p class="legenda">* Obrigatório · Os demais campos são opcionais</p>
+
+          <label for="descricao">Descrição *</label>
+          <input id="descricao" name="descricao" required>
+
+          <div class="campos-duplos">
+            <div>
+              <label for="valor">Valor *</label>
+              <div class="campo-valor">
+                <span>R$</span>
+                <input id="valor" name="valor" type="number" min="0.01" step="0.01"
+                       inputmode="decimal" required aria-describedby="erro-valor">
+              </div>
+              <p class="erro" id="erro-valor" role="alert" hidden>Informe um valor maior que R$ 0,00.</p>
+            </div>
+            <div>
+              <label for="data">Data *</label>
+              <input id="data" name="data" type="date" required>
+            </div>
+          </div>
+
+          <label for="categoria">Categoria *</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Selecione</option><option>Transporte</option><option>Hospedagem</option><option>Alimentação</option><option>Materiais</option>
+          </select>
+
+          <label for="observacao">Observação <span class="opcional">(opcional)</span></label>
+          <textarea id="observacao" name="observacao" rows="2"></textarea>
+
+          <input id="comprovante" name="comprovante" type="file" accept="image/*,.pdf" class="sr-only">
+          <label class="comprovante" for="comprovante">
+            <span class="comprovante-nome" id="comprovante-nome">Anexar comprovante (opcional)</span>
+            <span class="comprovante-detalhe">Foto ou PDF da nota fiscal</span>
+          </label>
+        </section>
+
+        <div class="acoes-form">
+          <button class="botao-primario" type="submit">Salvar despesa</button>
+          <a class="botao-secundario" href="minhas-despesas.html">Cancelar</a>
+        </div>
+      </form>
+
+      <aside class="painel-dica">
+        <h2>Pronto em menos de 1 minuto</h2>
+        <ol>
+          <li>Informe os dados da despesa</li>
+          <li>Confira a categoria</li>
+          <li>Anexe o comprovante e salve</li>
+        </ol>
+        <p>Meta de reembolso: até 7 dias. Acompanhe a situação na sua lista.</p>
+      </aside>
+    </div>
+
+    <p class="rodape-pagina">Dados fictícios • Uso interno restrito</p>
+  </main>
+
   <script src="../js/nova-despesa.js"></script>
 </body>
 </html>

@@ -36,9 +36,6 @@ body {
   border-radius: 8px;
 }
 
-.topo h1, .topo p { margin: 0; }
-.topo p { margin-top: .3rem; }
-
 main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
 
 .painel {
@@ -56,7 +53,7 @@ input, select, textarea {
   padding: .7rem;
   border: 1px solid #D1D5DB;
   border-radius: 5px;
-  color: var(--grafite);
+  color: var(--rev-texto);
   font: inherit;
 }
 
@@ -81,10 +78,57 @@ th { background: var(--rev-azul); color: white; }
   table { font-size: .9rem; }
 }
 
-.logo-pro {
-  display: flex;
+.navegacao {
+  display: flex; align-self: stretch; align-items: center; gap: 8px; margin: 0 auto;
+}
+.navegacao a {
+  min-width: 116px; padding: 13px 18px; border-radius: 9px; color: #667085; font-size: 14px; text-align: center; text-decoration: none; 
+}
+.navegacao a:hover {
+  background: #f5f7fb; color: var(--rev-azul); 
+  }
+.navegacao a.ativo {
+  background: #eff4ff;
+  color: var(--rev-azul);
+  font-weight: 650; 
+}
+.acao-nova,.botao-primario {
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background: var(--rev-azul);
-  color: white;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--rev-verde);
+  color: #fff; text-decoration: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer; 
+}
+.acao-nova:hover,.botao-primario:hover { background: #047857; }
+
+.botao-secundario {
+  border: 1px solid #d0d5dd;
+  background: #fff;
+  color: #344054; 
+}
+.botao-secundario:hover { background: #f9fafb; }
+
+.acao-nova span { font-size: 20px; line-height: 1; }
+
+@media (max-width: 900px) {
+  .topo { min-height: 82px; flex-wrap: wrap; gap: 10px 18px; padding: 14px 24px; }
+  .navegacao { order: 3; width: 100%; justify-content: flex-start; gap: 4px; overflow-x: auto; }
+  .navegacao a { min-width: auto; padding: 9px 13px; font-size: 13px; }
+  .acao-nova { margin-left: auto; min-height: 39px; padding: 0 12px; font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+  .topo { padding: 12px 17px; }
+  .logo { width: 180px; }
+  .navegacao { margin: 0 -2px; }
+  .navegacao a { padding: 8px 11px; }
 }

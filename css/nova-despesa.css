@@ -1,2 +1,98 @@
-.form-despesa { max-width: 620px; }
-.nota { color: #667085; font-size: .9rem; }
+.pagina-nova-despesa { font-family: "IBM Plex Sans", Inter, "Segoe UI", Arial, sans-serif; }
+
+/* Mesmo truque do .conteudo-revisao: anula max-width e padding do main do base.css */
+.pagina-nova-despesa main.conteudo-despesa {
+  width: min(1344px, calc(100% - 64px));
+  max-width: none;
+  margin: 32px auto 48px;
+  padding: 0;
+}
+
+.voltar {
+  display: inline-flex; align-items: center;
+  padding: 12px 16px; border-radius: 10px;
+  background: #fff; color: var(--rev-azul);
+  font-size: 14px; font-weight: 650; text-decoration: none;
+}
+.voltar:hover { background: #eff4ff; }
+
+.titulo-pagina { margin: 22px 0 28px; }
+.titulo-pagina h1 { margin: 0; color: var(--rev-azul); font-size: clamp(28px, 3vw, 36px); }
+.titulo-pagina p { margin: 8px 0 0; color: var(--rev-suave); font-size: 16px; }
+
+/* Duas colunas: formulário + cartão azul */
+.layout-despesa { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 30px; align-items: start; }
+
+.form-despesa { max-width: none; padding: 28px 30px; border-radius: 12px; border-color: var(--rev-borda); }
+.legenda { margin: 0; color: var(--rev-suave); font-size: 13px; }
+
+.form-despesa label { margin: 20px 0 8px; color: #344054; font-size: 14px; font-weight: 650; }
+.opcional { color: #98a2b3; font-weight: 400; }
+
+.form-despesa input:not([type="file"]),
+.form-despesa select,
+.form-despesa textarea {
+  min-height: 48px; padding: 11px 14px;
+  border: 1px solid #d0d5dd; border-radius: 8px;
+  background: #fff; color: #344054; font-size: 15px;
+}
+.form-despesa textarea { resize: vertical; }
+.form-despesa input:focus, .form-despesa select:focus, .form-despesa textarea:focus {
+  outline: 3px solid #dbeafe; border-color: #7da3ef;
+}
+
+/* Valor e Data lado a lado */
+.campos-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+.campo-valor { position: relative; }
+.campo-valor span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--rev-suave); font-size: 15px; }
+.form-despesa .campo-valor input { padding-left: 44px; }
+
+/* Estado de erro */
+.form-despesa input.invalido { border-color: #b42318; }
+.erro { margin: 8px 0 0; color: #b42318; font-size: 13px; font-weight: 700; }
+.erro[hidden] { display: none; }
+
+/* Caixa do comprovante */
+.form-despesa .comprovante {
+  margin: 22px 0 0; padding: 14px 16px;
+  border: 1px solid var(--rev-borda); border-radius: 10px;
+  background: #f9fafb; cursor: pointer; font-weight: 400;
+}
+.comprovante-nome { display: block; color: var(--rev-azul); font-weight: 650; }
+.comprovante-detalhe { display: block; margin-top: 4px; color: #98a2b3; font-size: 12px; }
+.form-despesa input[type="file"]:focus-visible + .comprovante { outline: 3px solid #dbeafe; border-color: #7da3ef; }
+
+/* Botões fora do cartão */
+.acoes-form { display: flex; gap: 14px; margin-top: 24px; }
+.acoes-form .botao-primario,
+.acoes-form .botao-secundario { min-height: 48px; min-width: 200px; margin: 0; font-size: 15px; }
+.acoes-form .botao-secundario {
+  display: inline-flex; justify-content: center; align-items: center;
+  color: var(--rev-azul); font-weight: 650; text-decoration: none;
+}
+
+/* Cartão azul */
+.painel-dica { padding: 26px; border: 1px solid #dbe4fb; border-radius: 12px; background: #eff4ff; color: var(--rev-azul); }
+.painel-dica h2 { margin: 0 0 20px; font-size: 22px; }
+.painel-dica ol { margin: 0 0 32px; padding-left: 20px; color: #374151; line-height: 1.8; }
+.painel-dica p { margin: 0; font-size: 14px; line-height: 1.6; }
+
+.rodape-pagina { margin: 28px 0 0; color: var(--rev-suave); font-size: 12px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 900px) {
+  .pagina-nova-despesa main.conteudo-despesa { width: min(100% - 40px, 760px); margin-top: 25px; }
+  .layout-despesa { grid-template-columns: 1fr; }
+}
+
+/* Celular: sem cartão, botão de largura total, sem o cartão azul (como no design) */
+@media (max-width: 600px) {
+  .pagina-nova-despesa main.conteudo-despesa { width: calc(100% - 32px); }
+  .painel-dica { display: none; }
+  .form-despesa { padding: 0; border: 0; background: transparent; }
+  .campos-duplos { gap: 0 14px; }
+  .acoes-form { flex-direction: column; }
+  .acoes-form .botao-primario { width: 100%; }
+  .acoes-form .botao-secundario { display: none; }
+}

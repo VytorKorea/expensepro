@@ -5,7 +5,7 @@
   border: 1px solid #E5E7EB;
   border-radius: 6px;
   background: white;
-  color: var(--azul);
+  color: var(--rev-azul);
   text-decoration: none;
 }
 .menu a:hover { border-color: var(--verde); }
