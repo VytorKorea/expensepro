@@ -10,15 +10,84 @@
 <body>
   <header class="topo">
     <a href="index.html"><img class="logo" src="img/logo.png" alt="ExpensePro"></a>
-  </header>
-  <main class="inicio">
-    <h2>Escolha uma área</h2>
-    <nav class="menu">
-      <a href="pages/nova-despesa.html">Cadastrar despesa</a>
-      <a href="pages/minhas-despesas.html">Consultar despesas</a>
-      <a href="pages/revisao.html">Revisar despesas</a>
-      <a href="pages/relatorios.html">Relatório por categoria</a>
+    <nav class="navegacao" aria-label="Áreas do sistema">
+      <a href="pages/minhas-despesas.html">Despesas</a>
+      <a href="pages/revisao.html">Financeiro</a>
+      <a href="pages/relatorios.html">Diretoria</a>
     </nav>
+    <a class="acao-nova" href="pages/nova-despesa.html"><span>+</span> Nova despesa</a>
+  </header>
+
+  <main class="inicio">
+    <section aria-labelledby="titulo-pagina">
+      <h1 id="titulo-pagina">Olá, Gustavo.</h1>
+      <p>Seus lançamentos em um só lugar.</p>
+    </section>
+
+    <section aria-label="Resumo do mês">
+      <article class="painel">
+        <h2>Total do mês</h2>
+        <p>R$ 674,70</p>
+        <p>3 despesas registradas</p>
+      </article>
+      <article class="painel">
+        <h2>Em revisão</h2>
+        <p>R$ 0,00</p>
+        <p>Nenhum lançamento pendente</p>
+      </article>
+      <article class="painel">
+        <h2>Aprovadas</h2>
+        <p>R$ 194,70</p>
+        <p>2 despesas prontas para reembolso</p>
+      </article>
+      <article class="painel">
+        <h2>Reembolsadas</h2>
+        <p>R$ 480,00</p>
+        <p>1 despesa concluída</p>
+      </article>
+    </section>
+
+    <section class="painel" aria-label="Despesas recentes">
+      <h2>Despesas recentes</h2>
+      <div class="area-tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Data</th>
+              <th>Categoria</th>
+              <th>Valor</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Almoço em visita técnica</td>
+              <td>11/11/2026</td>
+              <td>Alimentação</td>
+              <td>R$ 64,90</td>
+              <td>Aprovada</td>
+            </tr>
+            <tr>
+              <td>Hotel · Belo Horizonte</td>
+              <td>10/11/2026</td>
+              <td>Hospedagem</td>
+              <td>R$ 480,00</td>
+              <td>Reembolsada</td>
+            </tr>
+            <tr>
+              <td>Materiais para workshop</td>
+              <td>09/11/2026</td>
+              <td>Materiais</td>
+              <td>R$ 129,80</td>
+              <td>Aprovada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Dados fictícios para demonstração.</p>
+      <a href="pages/minhas-despesas.html">Ver todas as despesas</a>
+    </section>
   </main>
 </body>
 </html>
